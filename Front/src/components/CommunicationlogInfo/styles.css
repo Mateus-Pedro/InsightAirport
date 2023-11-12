@@ -1,0 +1,65 @@
+.container-info {
+    width: 100%;
+    background: #cef3f3;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 50px;
+    align-items: center;
+    padding: 0 20px;
+    border-radius: 100px;
+  }
+  .content-table-message {
+    width: 187px;
+    padding-left: 20px;
+}
+  .container-info-values-treatment {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+  }
+  
+  .container-info-status,
+  .container-info-time,
+  .container-info-pilot {
+    width: 120px;
+  }
+  
+  .container-info-button,
+  .container-info-button-nothing {
+    width: 100px;
+    height: 40px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .container-info-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .button {
+    width: 80px;
+  }
+  
+  .MuiButton-containedPrimary {
+    background-color: green;
+  }
+  
+  .MuiButton-containedSecondary {
+    background-color: red;
+  }
+  
+  .container-info-values {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 11px;
+  }
+  
+  .container-info-optins {
+    display: flex;
+    justify-content: center;
+  }
+  
