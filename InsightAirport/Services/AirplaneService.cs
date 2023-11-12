@@ -157,11 +157,18 @@ namespace InsightAirport.Services
         /// <returns>The added AirplaneModel.</returns>
         public async Task<AirplaneModel> Add(AirplaneModel AirplaneModel)
         {
-            if (AirplaneModel.DepartureTime < DateTime.Today)
-                throw new InvalidOperationException("Departure time must be from today onwards.");
-
+            if (AirplaneModel.DepartureTime < DateTime.Now)
+            {
+                throw new InvalidOperationException("Departure time must be from now onwards.");
+            }
             else if (AirplaneModel.DepartureTime > AirplaneModel.ArrivalTime)
+            {
                 throw new InvalidOperationException("The departure time must be less than the arrival time.");
+            }
+            else if (AirplaneModel.ArrivalTime < DateTime.Now)
+            {
+                throw new InvalidOperationException("Arrival time must be from now onwards.");
+            }
 
             return await _airplaneRepository.Add(AirplaneModel);
         }

@@ -14,19 +14,25 @@ function Airplane() {
 
   const handleAddAirplane = async (newAirplane) => {
     try {
-      if (
-        new Date(newAirplane.departureTime) > new Date(newAirplane.arrivalTime)
-      ) {
+      const departureTime = new Date(newAirplane.departureTime);
+      const arrivalTime = new Date(newAirplane.arrivalTime);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      
+      if (departureTime > arrivalTime) {
         toast.error("The departure time must be less than the arrival time.");
         return;
       }
-
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      if (new Date(newAirplane.departureTime) < today) {
+      
+      if (departureTime < today) {
         toast.error("Departure time must be from today onwards.");
         return;
       }
+      
+      if (arrivalTime < today) {
+        toast.error("Arrival time must be from today onwards.");
+        return;
+      }      
 
       const response = await fetch(api, {
         method: "POST",
@@ -39,6 +45,9 @@ function Airplane() {
       if (!response.ok) {
         toast.error("Failed to add airplane. Please try again.");
         return;
+      }else {
+        const errorText = await response.text();
+        toast.error(errorText);
       }
 
       const result = await response.json();
